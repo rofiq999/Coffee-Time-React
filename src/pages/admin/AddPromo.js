@@ -36,7 +36,7 @@ function AddPromo() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
- }, []);
+  }, []);
 
   const handleColor = (color) => {
     setColor(color);
@@ -109,10 +109,10 @@ function AddPromo() {
                 style={
                   productId === e.id
                     ? {
-                        backgroundColor: "black",
-                        color: "white",
-                        cursor: "pointer",
-                      }
+                      backgroundColor: "black",
+                      color: "white",
+                      cursor: "pointer",
+                    }
                     : { backgroundColor: "#fff", cursor: "pointer" }
                 }
                 onClick={() => {
@@ -213,7 +213,7 @@ function AddPromo() {
                   width: "80%",
                 }}
               >
-                <button
+                <button className={`${styles["select-color"]} `}
                   onClick={() => {
                     setShowColor((showColor) => !showColor);
                     if (showColor) return setPrevColor(color);
@@ -257,7 +257,7 @@ function AddPromo() {
                 <label>for product :</label>
                 <div onClick={() => setShow(true)}>product : {nameProduct}</div>
                 <div onClick={() => setShow(true)}>size : {sizeProduct}</div>
-                <button onClick={() => setShow(true)}>choose product</button>
+                <button className={`${styles["choose-product"]} `} onClick={() => setShow(true)}>choose product</button>
                 <label for="">valid until :</label>
                 <input
                   type="date"

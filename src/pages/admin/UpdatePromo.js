@@ -151,10 +151,10 @@ function UpdatePromo() {
                 style={
                   productId === e.id
                     ? {
-                        backgroundColor: "black",
-                        color: "white",
-                        cursor: "pointer",
-                      }
+                      backgroundColor: "black",
+                      color: "white",
+                      cursor: "pointer",
+                    }
                     : { backgroundColor: "#fff", cursor: "pointer" }
                 }
                 onClick={() => {
@@ -300,9 +300,9 @@ function UpdatePromo() {
               </div>
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "80%",
+                  // display: "flex",
+                  // justifyContent: "space-between",
+                  // width: "80%",
                 }}
               >
                 <button className={styles.bg_setColor}

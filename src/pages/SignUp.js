@@ -145,8 +145,10 @@ const SignUp = () => {
                      />
                   </div>
                   <div onClick={handleToggle} className="w-100 ms-5 me-5">
-                     Show Password
-                     <Icon icon={icon} className="ms-2 my-2" />
+                     {/* Show Password */}
+                     <span className={`${styles['content-show']} `}>
+                        <Icon icon={icon} className={`${styles['show-pass']} ms-2 my-2`} />
+                     </span>
                   </div>
                   <div className={styles["input"]}>
                      <label for="">Phone Number :</label>
