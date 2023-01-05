@@ -17,7 +17,7 @@ function Footer_login_signup() {
                 <section className={styles["footer-left"]}>
                     <div className={styles["icon-footer"]}>
                         <img src={icon_coffee} alt="icon_coffee" />
-                        <p>Coffee Addict</p>
+                        <p>Coffee Time</p>
                     </div>
                     <p className={styles["description"]}>Coffee Shop is a store that sells some good meals, and especially coffee. We
                         provide high quality
@@ -27,7 +27,7 @@ function Footer_login_signup() {
                         <img src={icon_twitter} alt="twitter" />
                         <img src={icon_instagram} alt="insagram" />
                     </div>
-                    <span className={styles["copyright"]}>©2022CoffeeAddict </span>
+                    <span className={styles["copyright"]}>©2022CoffeeTime </span>
                 </section>
 
                 <section className={styles["footer-right"]}>

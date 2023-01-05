@@ -26,22 +26,22 @@ const ForgotPWD = () => {
    const sendMail = (e) => {
       setLoading(true)
       e.preventDefault()
-      if(!email) return (setLoading(false),setNotif(false))
+      if (!email) return (setLoading(false), setNotif(false))
       axios.patch(`${process.env.REACT_APP_BACKEND_HOST}/users/forgot/${email}`)
-      .then((res) => {
-         console.log(res.data.result.msg)
-         setNotif(true)
-         setLoading(false)
-         setTimeout(() => {
-            navigate('/resetpassword')
-         }, 4000);
-      })
-      
-      .catch((err) => {
-         console.log(err)
-         setNotif(true)
-         setLoading(false)
-      })
+         .then((res) => {
+            console.log(res.data.result.msg)
+            setNotif(true)
+            setLoading(false)
+            setTimeout(() => {
+               navigate('/resetpassword')
+            }, 4000);
+         })
+
+         .catch((err) => {
+            console.log(err)
+            setNotif(true)
+            setLoading(false)
+         })
    }
 
 
@@ -50,7 +50,7 @@ const ForgotPWD = () => {
       console.log(e.target.value)
    }
 
-   titlebar("Coffee Addict | Forgot Password");   
+   titlebar("Coffee Time | Forgot Password");
    return (
       <>
          <main className={styles["container"]}>
@@ -66,7 +66,7 @@ const ForgotPWD = () => {
             <aside className={styles["right-heading"]}>
                <div className={styles["icon-coffee"]}>
                   <img src={icon_coffee} alt="icon_coffee" />
-                  <p>Coffee Addict</p>
+                  <p>Coffee Time</p>
                </div>
                <form className={styles.register}>
                   <div className={`${styles["forgot-text"]} text-center`}>
@@ -90,11 +90,11 @@ const ForgotPWD = () => {
                   </div>
 
                   <div className={`${styles["send-text"]} text-center`}>
-                     {notif ? 
-                     <p className={styles.send_one}>
-                        Please Check your email to get otp
-                     </p> : 
-                     null}
+                     {notif ?
+                        <p className={styles.send_one}>
+                           Please Check your email to get otp
+                        </p> :
+                        null}
                   </div>
 
                   <a href="/Sign-up.html" className={styles["button-login"]}>

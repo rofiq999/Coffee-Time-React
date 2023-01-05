@@ -28,7 +28,7 @@ import withNavigate from "../helpers/withNavigate";
 import { Spinner } from "react-bootstrap";
 import authActions from "../redux/actions/auth"
 import { useDispatch } from "react-redux";
-import {LoginUser} from "../utility/axios"
+import { LoginUser } from "../utility/axios"
 
 // Function program
 function Login() {
@@ -78,16 +78,16 @@ function Login() {
    const handleApi = async (e) => {
       try {
          e.preventDefault();
-         if(!email || !passwords ) return  (toast.error("Data register can't be empty", {
-         position: toast.POSITION.TOP_RIGHT,
+         if (!email || !passwords) return (toast.error("Data register can't be empty", {
+            position: toast.POSITION.TOP_RIGHT,
          }), setLoading(false))
-         const response = await LoginUser({email, passwords})
+         const response = await LoginUser({ email, passwords })
          localStorage.setItem("token", response.data.result.data.token);
          localStorage.setItem("role", response.data.result.data.role);
          await dispatch(authActions.userIDThunk(response.data.result.data.token),
-         () => {
-            SuccessMessage();
-         })
+            () => {
+               SuccessMessage();
+            })
          navigate("/")
          setLoading(false)
       } catch (error) {
@@ -128,7 +128,7 @@ function Login() {
    };
 
    /* Main Website */
-   titlebar("Coffee Addict | Login");
+   titlebar("Coffee Time | Login");
    return (
       <>
          <ToastContainer />
@@ -145,7 +145,7 @@ function Login() {
                      width="40px"
                      height="40px"
                   />
-                  <p>Coffee Addict</p>
+                  <p>Coffee Time</p>
                   <span>Login</span>
                </Link>
                <form className={styles.register} onSubmit={handleApi}>
@@ -178,8 +178,8 @@ function Login() {
                   </Link>
                   <div className={styles.button}>
                      {loading ? <div className="d-flex justify-content-center align-items-center pt-3">
-                           <Spinner animation="border" />
-                        </div> : <button>Login</button>}
+                        <Spinner animation="border" />
+                     </div> : <button>Login</button>}
                   </div>
                   <div className={styles["button-google"]}>
                      <span>
@@ -214,7 +214,7 @@ export default withNavigate(Login);
 //     };
 
 //     render() {
-//         titlebar("Coffee Addict | Login")
+//         titlebar("Coffee Time | Login")
 //         return (
 //             <>
 //                 <main className={styles["container"]}>
@@ -225,7 +225,7 @@ export default withNavigate(Login);
 //                     <aside className={styles["right-heading"]}>
 //                         <div className={styles["icon-coffee"]}>
 //                             <img src={icon_coffee} alt="icon_coffee" />
-//                             <p>Coffee Addict</p>
+//                             <p>Coffee Time</p>
 //                             <span>Login</span>
 //                         </div>
 //                         <form className={styles.register}>

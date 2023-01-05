@@ -18,48 +18,48 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ResetPassword = () => {
 
-  const navigate = useNavigate()
+   const navigate = useNavigate()
 
-  const [password, setPassword] = useState('')
-  const [otp, setOtp] = useState()
-  const [loading, setLoading] = useState()
+   const [password, setPassword] = useState('')
+   const [otp, setOtp] = useState()
+   const [loading, setLoading] = useState()
 
-  const valuePassword = (e) => {
-    setPassword(e.target.value)
-  }
+   const valuePassword = (e) => {
+      setPassword(e.target.value)
+   }
 
-  const valueOTP = (e) => {
-    setOtp(e.target.value)
-  }
+   const valueOTP = (e) => {
+      setOtp(e.target.value)
+   }
 
-  const ResetPassword = (e) => {
-    setLoading(true)
-    e.preventDefault()
-    if(!otp || !password) return (toast.error("Data don't empty", {
-      position: toast.POSITION.TOP_RIGHT,
-   }),setLoading(false))
-    axios.patch(`${process.env.REACT_APP_BACKEND_HOST}/users/changePwd`, {otp, password})
-    .then((res) => {
-      
-      toast.success(res.data.result.msg, {
-        position: toast.POSITION.TOP_RIGHT,
-     })
-      setLoading(false)
-      navigate('/login')
-    })
-    .catch((err)=> {
-      toast.error("code otp expired please send email again in forgot password", {
-      position: toast.POSITION.TOP_RIGHT,
-      })
-      setLoading(false)
-      navigate("/forgotpassword")
-    })
-  }
+   const ResetPassword = (e) => {
+      setLoading(true)
+      e.preventDefault()
+      if (!otp || !password) return (toast.error("Data don't empty", {
+         position: toast.POSITION.TOP_RIGHT,
+      }), setLoading(false))
+      axios.patch(`${process.env.REACT_APP_BACKEND_HOST}/users/changePwd`, { otp, password })
+         .then((res) => {
 
-   titlebar("Coffee Addict | Reset Password");   
+            toast.success(res.data.result.msg, {
+               position: toast.POSITION.TOP_RIGHT,
+            })
+            setLoading(false)
+            navigate('/login')
+         })
+         .catch((err) => {
+            toast.error("code otp expired please send email again in forgot password", {
+               position: toast.POSITION.TOP_RIGHT,
+            })
+            setLoading(false)
+            navigate("/forgotpassword")
+         })
+   }
+
+   titlebar("Coffee Time | Reset Password");
    return (
       <>
-      <ToastContainer />
+         <ToastContainer />
          <main className={styles["container"]}>
             <aside className={styles["left-heading"]}>
                <img
@@ -73,14 +73,14 @@ const ResetPassword = () => {
             <aside className={styles["right-heading"]}>
                <div className={styles["icon-coffee"]}>
                   <img src={icon_coffee} alt="icon_coffee" />
-                  <p>Coffee Addict</p>
+                  <p>Coffee Time</p>
                </div>
                <form className={styles.register}>
                   <div className={`${styles["forgot-text"]} text-center`}>
                      <h3 className={styles.text_one}>Reset Password</h3>
                   </div>
                   <div className={styles.input}>
-                    <label className={styles.label_input} htmlFor="">OTP</label>
+                     <label className={styles.label_input} htmlFor="">OTP</label>
                      <input
                         type="text"
                         onChange={valueOTP}
@@ -95,7 +95,7 @@ const ResetPassword = () => {
                   </div>
 
                   <div className={styles.button}>
-                    {loading ? <div className="d-flex justify-content-center align-items-center mx-auto">
+                     {loading ? <div className="d-flex justify-content-center align-items-center mx-auto">
                         <Spinner animation="border" variant="info" />
                      </div> : <button onClick={ResetPassword}>Confirm Reset Password</button>}
                   </div>

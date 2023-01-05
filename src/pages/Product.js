@@ -12,7 +12,7 @@ import CardPromo from "../components/CardPromo";
 import CardProduct from "../components/Card-Product";
 import titlebar from "../utility/WebDinamis";
 import { useState, useEffect } from "react";
-import {  useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 
@@ -35,9 +35,9 @@ const Product = () => {
    const [loading, setLoading] = useState(false);
    const [loading_promo, setLoading_promo] = useState(false)
    const navigate = useNavigate();
-   
 
-   useEffect(() => {      
+
+   useEffect(() => {
       setLoading(true)
       setLoading_promo(true)
       axios
@@ -115,8 +115,7 @@ const Product = () => {
    const getPrevProducts = () => {
       setCurrentPage(currentPage - 1);
       navigate(
-         `?category=${category}&sorting=${sorting}&page=${
-            currentPage - 1
+         `?category=${category}&sorting=${sorting}&page=${currentPage - 1
          }&limit=12`
       );
       axios
@@ -132,8 +131,7 @@ const Product = () => {
    const getNextProducts = () => {
       setCurrentPage(currentPage + 1);
       navigate(
-         `?category=${category}&sorting=${sorting}&page=${
-            currentPage + 1
+         `?category=${category}&sorting=${sorting}&page=${currentPage + 1
          }&limit=12`
       );
       axios
@@ -147,9 +145,9 @@ const Product = () => {
          .catch((err) => console.log(err));
    };
 
-   
 
-   titlebar("Coffee Addict | Product");
+
+   titlebar("Coffee Time | Product");
    return (
       <>
          {profile.role === 'admin' ? <NavbarAdmin /> : profile.role === 'user' ? <Navbar /> : <NavbarnotLogin />}
@@ -221,18 +219,18 @@ const Product = () => {
                         </>
                      )}
                      {/* {profile.role !== null ?  : null} */}
-                  {profile.role === 'admin' ? <button
-                  onClick={()=> navigate('/addProduct')}
-                    className={`${styles["apply-coupon"]} mt-5 rounded-5 w-100`}
-                  >
-                    Add product
-                  </button> : null} 
-                  {profile.role === 'admin' ? <button
-                  onClick={()=> navigate('/addpromo')}
-                    className={`${styles["apply-coupon"]} mt-5 rounded-5 w-100`}
-                  >
-                    {profile.role === "admin" ? "add coupon" : "Apply Coupon"}
-                  </button> : null}
+                     {profile.role === 'admin' ? <button
+                        onClick={() => navigate('/addProduct')}
+                        className={`${styles["apply-coupon"]} mt-5 rounded-5 w-100`}
+                     >
+                        Add product
+                     </button> : null}
+                     {profile.role === 'admin' ? <button
+                        onClick={() => navigate('/addpromo')}
+                        className={`${styles["apply-coupon"]} mt-5 rounded-5 w-100`}
+                     >
+                        {profile.role === "admin" ? "add coupon" : "Apply Coupon"}
+                     </button> : null}
                   </div>
                   {/* product */}
                   <div className="col-lg-8 col-md-12 col-sm-12">
@@ -244,13 +242,13 @@ const Product = () => {
                               style={
                                  category === "favorite"
                                     ? {
-                                         borderBottom: "2px solid #6A4029",
-                                         fontFamily: "Rubik",
-                                         fontStyle: "normal",
-                                         fontWeight: 700,
-                                         fontSize: "15px",
-                                         color: "#6A4029",
-                                      }
+                                       borderBottom: "2px solid #6A4029",
+                                       fontFamily: "Rubik",
+                                       fontStyle: "normal",
+                                       fontWeight: 700,
+                                       fontSize: "15px",
+                                       color: "#6A4029",
+                                    }
                                     : null
                               }
                               className={`${styles.point}`}
@@ -269,13 +267,13 @@ const Product = () => {
                               style={
                                  category === "coffee"
                                     ? {
-                                         borderBottom: "2px solid #6A4029",
-                                         fontFamily: "Rubik",
-                                         fontStyle: "normal",
-                                         fontWeight: 700,
-                                         fontSize: "15px",
-                                         color: "#6A4029",
-                                      }
+                                       borderBottom: "2px solid #6A4029",
+                                       fontFamily: "Rubik",
+                                       fontStyle: "normal",
+                                       fontWeight: 700,
+                                       fontSize: "15px",
+                                       color: "#6A4029",
+                                    }
                                     : null
                               }
                               className={styles.point}
@@ -294,13 +292,13 @@ const Product = () => {
                               style={
                                  category === "non_coffee"
                                     ? {
-                                         borderBottom: "2px solid #6A4029",
-                                         fontFamily: "Rubik",
-                                         fontStyle: "normal",
-                                         fontWeight: 700,
-                                         fontSize: "15px",
-                                         color: "#6A4029",
-                                      }
+                                       borderBottom: "2px solid #6A4029",
+                                       fontFamily: "Rubik",
+                                       fontStyle: "normal",
+                                       fontWeight: 700,
+                                       fontSize: "15px",
+                                       color: "#6A4029",
+                                    }
                                     : null
                               }
                               className={styles.point}
@@ -319,13 +317,13 @@ const Product = () => {
                               style={
                                  category === "foods"
                                     ? {
-                                         borderBottom: "2px solid #6A4029",
-                                         fontFamily: "Rubik",
-                                         fontStyle: "normal",
-                                         fontWeight: 700,
-                                         fontSize: "15px",
-                                         color: "#6A4029",
-                                      }
+                                       borderBottom: "2px solid #6A4029",
+                                       fontFamily: "Rubik",
+                                       fontStyle: "normal",
+                                       fontWeight: 700,
+                                       fontSize: "15px",
+                                       color: "#6A4029",
+                                    }
                                     : null
                               }
                               className={styles.point}
@@ -344,13 +342,13 @@ const Product = () => {
                               style={
                                  category === "addon"
                                     ? {
-                                         borderBottom: "2px solid #6A4029",
-                                         fontFamily: "Rubik",
-                                         fontStyle: "normal",
-                                         fontWeight: 700,
-                                         fontSize: "15px",
-                                         color: "#6A4029",
-                                      }
+                                       borderBottom: "2px solid #6A4029",
+                                       fontFamily: "Rubik",
+                                       fontStyle: "normal",
+                                       fontWeight: 700,
+                                       fontSize: "15px",
+                                       color: "#6A4029",
+                                    }
                                     : null
                               }
                               className={styles.point}
@@ -420,18 +418,16 @@ const Product = () => {
 
                            <div className="container d-flex justify-content-end mb-5">
                               <button
-                                 className={`${styles["button-prev"]} ${
-                                    prev === null ? "d-none" : "d-block"
-                                 }`}
+                                 className={`${styles["button-prev"]} ${prev === null ? "d-none" : "d-block"
+                                    }`}
                                  onClick={getPrevProducts}
                                  disabled={prev === null}
                               >
                                  Prev
                               </button>
                               <button
-                                 className={`${styles["button-next"]} ${
-                                    next === null ? "d-none" : "d-block"
-                                 }`}
+                                 className={`${styles["button-next"]} ${next === null ? "d-none" : "d-block"
+                                    }`}
                                  onClick={getNextProducts}
                                  disabled={next === null}
                               >

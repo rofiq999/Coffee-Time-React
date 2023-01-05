@@ -95,8 +95,7 @@ const History = () => {
    };
    useEffect(() => {
       getHistory(
-         `${process.env.REACT_APP_BACKEND_HOST}/transactions${
-            profile.role === "admin" ? "/status" : "/history?page=1&limit=9"
+         `${process.env.REACT_APP_BACKEND_HOST}/transactions${profile.role === "admin" ? "/status" : "/history?page=1&limit=9"
          }`
       );
       console.log(history);
@@ -121,7 +120,7 @@ const History = () => {
       );
    };
 
-   titlebar("Coffee Addict | History");
+   titlebar("Coffee Time | History");
    return (
       <>
          {profile.role === "admin" ? <NavbarAdmin /> : <Navbar />}

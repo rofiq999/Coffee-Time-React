@@ -178,7 +178,7 @@ const Profile = () => {
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
 
-   titlebar("Coffee Addict | Profile");
+   titlebar("Coffee Time| Profile");
 
    // console.log(image);
 
@@ -366,11 +366,11 @@ const Profile = () => {
                               birthday === null
                                  ? null
                                  : birthday
-                                      .slice(0, 10)
-                                      .split("-")
-                                      .join("/")
-                                      .split("/")
-                                      .join("-")
+                                    .slice(0, 10)
+                                    .split("-")
+                                    .join("/")
+                                    .split("/")
+                                    .join("-")
                            }
                            onChange={valueBirthday}
                            placeholder="Input Birthday"
@@ -396,10 +396,10 @@ const Profile = () => {
                         <input
                            type="radio"
                            name="gender"
-                           id="male"
-                           value={"male"}
+                           id="MALE"
+                           value={"MALE"}
                            onChange={valueGender}
-                           checked={gender === "male"}
+                           checked={gender === "MALE"}
                            disabled={isEdit}
                         />
                         <label htmlFor="MALE" className={styles.radio_label}>
@@ -410,10 +410,10 @@ const Profile = () => {
                         <input
                            type="radio"
                            name="gender"
-                           id="female"
-                           value={"female"}
+                           id="FEMALE"
+                           value={"FEMALE"}
                            onChange={valueGender}
-                           checked={gender === "female"}
+                           checked={gender === "FEMALE"}
                            disabled={isEdit}
                         />
                         <label htmlFor="FEMALE" className={styles.radio_label}>
@@ -438,7 +438,7 @@ const Profile = () => {
             </Modal.Header>
             <Modal.Body>are you sure you want to log out?</Modal.Body>
             <Modal.Footer>
-            <Button
+               <Button
                   variant="success"
                   className="fw-bold text-bg-success text-white"
                   onClick={handleLogout}
@@ -452,7 +452,7 @@ const Profile = () => {
                >
                   No
                </Button>
-              
+
             </Modal.Footer>
          </Modal>
       </>

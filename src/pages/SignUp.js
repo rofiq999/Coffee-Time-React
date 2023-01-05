@@ -33,7 +33,7 @@ const SignUp = () => {
    const [loading, setLoading] = useState(false)
    const navigate = useNavigate();
    const url = `${process.env.REACT_APP_BACKEND_HOST}/users`;
-   
+
 
    useEffect(() => {
       window.scrollTo(0, 0);
@@ -43,7 +43,7 @@ const SignUp = () => {
    const handlingRegister = (e) => {
       e.preventDefault();
       setLoading(true)
-      if(!email || !passwords || !phone_number) return  (toast.error("Data register can't be empty", {
+      if (!email || !passwords || !phone_number) return (toast.error("Data register can't be empty", {
          // menampilkan notifikasi error
          position: toast.POSITION.TOP_RIGHT,
       }), setLoading(false))
@@ -101,7 +101,7 @@ const SignUp = () => {
       });
    };
 
-   titlebar("Coffee Addict | Sign-Up");
+   titlebar("Coffee Time | Sign-Up");
    return (
       <>
          <ToastContainer />
@@ -118,7 +118,7 @@ const SignUp = () => {
                      width="40px"
                      height="40px"
                   />
-                  <p>Coffee Addict</p>
+                  <p>Coffee Time</p>
                   <span>Sign Up</span>
                </Link>
                <form className={styles["register"]} onSubmit={handlingRegister}>
@@ -160,9 +160,9 @@ const SignUp = () => {
                      />
                   </div>
                   <div className={styles["button"]}>
-                     {loading ?  <div className="d-flex justify-content-center align-items-center pt-3">
-                           <Spinner animation="border" />
-                        </div> : <button>Sign Up</button>}
+                     {loading ? <div className="d-flex justify-content-center align-items-center pt-3">
+                        <Spinner animation="border" />
+                     </div> : <button>Sign Up</button>}
                   </div>
                   <div className={styles["button-google"]}>
                      <span>

@@ -35,7 +35,7 @@ import rounded from "../asset/rounded.png";
 import { useEffect } from "react";
 
 const Home = () => {
-   
+
 
    const navLogin = <Navbar />;
    const navAdmin = <NavbarAdmin />;
@@ -67,7 +67,7 @@ const Home = () => {
       }
    };
 
-   titlebar("Coffee Addict | Home");
+   titlebar("Coffee Time | Home");
    return (
       <>
          {navtype()}

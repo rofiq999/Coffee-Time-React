@@ -67,42 +67,42 @@ const Payment = () => {
    const handleTransactions = () => {
       setLoading(true)
       const getToken = localStorage.getItem('token')
-      if(!payment) return (toast.error("Choose payment method", {
+      if (!payment) return (toast.error("Choose payment method", {
          position: toast.POSITION.TOP_RIGHT,
       }), setLoading(false))
-      axios.post(`${process.env.REACT_APP_BACKEND_HOST}/transactions`,{
-         product_id : product.id_product,
-         promo_id : product.id_promo,
-         delivery_id : product.delivery_method,
-         method_payment : payment,
-         qty : product.qty,
-         tax : 10,
-         total : (product.qty*product.price) + ((product.price*product.qty*10)/100) + (product.delivery_method === 1 ? 5000 : 0),
-         status : (payment === 'Cash On Delivery') ? 'pending' : 'paid'
+      axios.post(`${process.env.REACT_APP_BACKEND_HOST}/transactions`, {
+         product_id: product.id_product,
+         promo_id: product.id_promo,
+         delivery_id: product.delivery_method,
+         method_payment: payment,
+         qty: product.qty,
+         tax: 10,
+         total: (product.qty * product.price) + ((product.price * product.qty * 10) / 100) + (product.delivery_method === 1 ? 5000 : 0),
+         status: (payment === 'Cash On Delivery') ? 'pending' : 'paid'
       },
-      {
-         headers: {
-            'x-access-token' : getToken
-         }
-      })
-      .then((res) => {
-         handleResetRedux()
-         toast.success("Transactions Success", {
-            position: toast.POSITION.TOP_RIGHT,
+         {
+            headers: {
+               'x-access-token': getToken
+            }
          })
-         navigate('/product')
-         setLoading(false)
-      })
-      .catch((err) => {
-         console.log(err)
-         toast.error('internal server error', {
-            position: toast.POSITION.TOP_RIGHT,
+         .then((res) => {
+            handleResetRedux()
+            toast.success("Transactions Success", {
+               position: toast.POSITION.TOP_RIGHT,
+            })
+            navigate('/product')
+            setLoading(false)
          })
-         setLoading(false)
-      })
+         .catch((err) => {
+            console.log(err)
+            toast.error('internal server error', {
+               position: toast.POSITION.TOP_RIGHT,
+            })
+            setLoading(false)
+         })
    }
 
-   titlebar("Coffee Addict | Payment");
+   titlebar("Coffee Time | Payment");
    return (
       <>
          {/* <!-- Start Navbar --> */}
@@ -149,15 +149,15 @@ const Payment = () => {
                                  <p>{product.disc === null ? null : 'Discount (%)'}</p>
                               </div>
                               <div className={styles["total-payment-right"]}>
-                                 <p>{costing(product.disc === null ? product.qty*product.price : (product.qty*product.price)-((product.qty*product.price)*(product.disc/100)))}</p>
-                                 <p>{costing((product.price*product.qty*10)/100)}</p>
+                                 <p>{costing(product.disc === null ? product.qty * product.price : (product.qty * product.price) - ((product.qty * product.price) * (product.disc / 100)))}</p>
+                                 <p>{costing((product.price * product.qty * 10) / 100)}</p>
                                  <p>{product.delivery_method === 1 ? costing(5000) : costing(0)}</p>
                                  <p>{product.disc === null ? null : `${product.disc} %`}</p>
                               </div>
                            </div>
                            <div className={styles["subtotal-payment"]}>
                               <p>TOTAL</p>
-                              <p>{costing((product.disc === null ? product.qty*product.price : (product.qty*product.price)-((product.qty*product.price)*(product.disc/100))) + ((product.price*product.qty*10)/100) + (product.delivery_method === 1 ? 5000 : 0))}</p>
+                              <p>{costing((product.disc === null ? product.qty * product.price : (product.qty * product.price) - ((product.qty * product.price) * (product.disc / 100))) + ((product.price * product.qty * 10) / 100) + (product.delivery_method === 1 ? 5000 : 0))}</p>
                            </div>
                         </div>
                      </div>
@@ -167,7 +167,7 @@ const Payment = () => {
                            <div className="col-12">
                               <div className={styles["address-detail"]}>
                                  <h2>Address</h2>
-                                 <p style={{cursor:'pointer'}} onClick={() => navigate("/profile")}>
+                                 <p style={{ cursor: 'pointer' }} onClick={() => navigate("/profile")}>
                                     edit
                                  </p>
                               </div>
@@ -281,8 +281,8 @@ const Payment = () => {
                            <div className={styles["confirm-pay"]}>
                               <button onClick={handleTransactions}>
                                  {loading ? <div className="d-flex justify-content-center align-items-center mx-auto">
-                        <Spinner animation="border" variant="info" />
-                     </div> : <span>Confirm and Pay</span>}
+                                    <Spinner animation="border" variant="info" />
+                                 </div> : <span>Confirm and Pay</span>}
                               </button>
                            </div>
                         </div>

@@ -3,7 +3,7 @@ import React from "react";
 import Axios from "axios";
 // import withSearchParams from "../helpers/withSearchParams";
 // import withParams from "../helpers/withRouteParams";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // import css
 import styles from "../styles/ProductDetail.module.css";
@@ -32,7 +32,7 @@ const ProductDetail = () => {
    const dispatch = useDispatch()
    const product = useSelector((state) => state.auth.product)
    const { id } = useParams();
-   
+
    const navigate = useNavigate();
 
    const url = `${process.env.REACT_APP_BACKEND_HOST}/product/${id}`;
@@ -44,7 +44,7 @@ const ProductDetail = () => {
    const [image, setImage] = useState("");
    const [description, setDescription] = useState("");
    // const [style, setStyle] = useState(`${styles.selected}`);
-   
+
    useEffect(() => {
       window.scrollTo(0, 0);
       Axios.get(url)
@@ -94,19 +94,19 @@ const ProductDetail = () => {
    };
 
    const handleAddtoCart = () => {
-      if(!deliv) return (console.log("delivery method harus di isi"))
+      if (!deliv) return (console.log("delivery method harus di isi"))
       dispatch(authAction.productThunk({
          id_product: parseInt(id),
          price: price,
          name_product: name,
-         total: price*product.qty,
+         total: price * product.qty,
          image: image,
          size: size,
          delivery_method: parseInt(deliv)
       }))
    }
 
-   titlebar("Coffee Addict | Product Detail");
+   titlebar("Coffee Time | Product Detail");
    return (
       <>
          <Navbar />
@@ -142,13 +142,13 @@ const ProductDetail = () => {
                         </button>
                         <button value='1' onClick={(e) => setDeliv(e.target.value)}
                            className={deliv === '1' ? `${styles.btn_delivery_time} ${styles.selected} my-sm-2` : `${styles.btn_delivery_time} my-sm-2`}
-                           
+
                         >
                            Door Delivery
                         </button>
                         <button value='2' onClick={(e) => setDeliv(e.target.value)}
                            className={deliv === '2' ? `${styles.btn_delivery_time} ${styles.selected} my-sm-2` : `${styles.btn_delivery_time} my-sm-2`}
-                           
+
                         >
                            Pick Up
                         </button>
@@ -173,7 +173,7 @@ const ProductDetail = () => {
                            <button
                               type="button"
                               onClick={() =>
-                                 (product.qty === 1) ? dispatch(authAction.productThunk({qty: product.qty})) : dispatch(authAction.productThunk({qty: product.qty - 1}))
+                                 (product.qty === 1) ? dispatch(authAction.productThunk({ qty: product.qty })) : dispatch(authAction.productThunk({ qty: product.qty - 1 }))
                               }
                            >
                               -
@@ -183,14 +183,14 @@ const ProductDetail = () => {
                         <span>
                            <button
                               type="button"
-                              onClick={() => dispatch(authAction.productThunk({qty: product.qty + 1}))}
+                              onClick={() => dispatch(authAction.productThunk({ qty: product.qty + 1 }))}
                            >
                               +
                            </button>
                         </span>
                      </div>
                      <p className={styles.price}>
-                        {costing(price*product.qty)}
+                        {costing(price * product.qty)}
                      </p>
                   </section>
                   <span
@@ -244,7 +244,7 @@ const ProductDetail = () => {
                         <span className="fs-4 fw-bold">Checkout</span>
                         <button
                            className={styles.button_checkout}
-                           onClick={() => {handleAddtoCart();navigate(`/payment`)}}
+                           onClick={() => { handleAddtoCart(); navigate(`/payment`) }}
                         >
                            <i className="bi bi-arrow-right"></i>
                         </button>
