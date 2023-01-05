@@ -12,11 +12,11 @@ function Otp() {
 
   useEffect(() => {
     axios
-    .get(
-      `${process.env.REACT_APP_BACKEND_HOST}/auth/${otp}`,
-    )
-    .then(() => console.log("success"))
-    .catch((err) => console.log(err));
+      .get(
+        `${process.env.REACT_APP_BACKEND_HOST}/users/verify/${otp}`,
+      )
+      .then(() => console.log("success"))
+      .catch((err) => console.log(err));
 
   }, [])
 
@@ -24,7 +24,7 @@ function Otp() {
 
   return (
     <>
-    <div
+      <div
         className={`container-fluid ${css.container}`}
       >
         <div className='d-flex flex-column justify-content-center align-items-center'>
