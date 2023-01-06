@@ -166,9 +166,8 @@ function Login() {
                      />
 
                      <span className={`ms-2 my-2`} onClick={handleToggle}>
-                        Show Password
                         <div className={`${styles['content-show']} `}>
-                           <Icon icon={icon} className={`${styles['show-pass']} ms-2 my-2`} />
+                           <Icon icon={icon} className={`${styles['show-pass']} ms-2`} />
                         </div>
                      </span>
                   </div>

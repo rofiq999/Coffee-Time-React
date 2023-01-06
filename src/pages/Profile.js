@@ -29,6 +29,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import authAction from "../redux/actions/auth";
+import { Icon } from "react-icons-kit";
+import { eye } from "react-icons-kit/feather/eye";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
 
 const Profile = () => {
    const navigate = useNavigate();
@@ -47,9 +50,16 @@ const Profile = () => {
    const [isEdit, setIsEdit] = useState(true);
    const [loading, setLoading] = useState(false);
    const [show, setShow] = useState(false);
-   // const navLogin = <Navbar />;
-   // const navAdmin = <NavbarAdmin />;
-   // const navnotLogin = <NavbarnotLogin />;
+   const [showPass, setShowPass] = useState(false);
+   const [typeOld, setTypeOld] = useState("password");
+   const [iconOld, setIconOld] = useState(eyeOff);
+   const [typeNew, setTypeNew] = useState("password");
+   const [iconNew, setIconNew] = useState(eyeOff);
+   const [typeConfirm, setTypeConfirm] = useState("password");
+   const [iconConfirm, setIconConfirm] = useState(eyeOff);
+   const [newPasswords, setNewPasswords] = useState("");
+   const [oldPasswords, setOldPasswords] = useState("");
+   const [confirmPasswords, setConfirmPasswords] = useState("");
 
    useEffect(() => {
       window.scrollTo(0, 0);
@@ -178,6 +188,88 @@ const Profile = () => {
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
 
+   const handleClosePass = () => {
+      setShowPass(false);
+      setTypeOld("password");
+      setIconOld(eyeOff);
+      setTypeNew("password");
+      setIconNew(eyeOff);
+      setTypeConfirm("password");
+      setIconConfirm(eyeOff);
+      setNewPasswords("");
+      setOldPasswords("");
+      setConfirmPasswords("");
+   };
+
+   const handleOldToggle = () => {
+      if (typeOld === "password") {
+         setIconOld(eye);
+         setTypeOld("text");
+      } else {
+         setIconOld(eyeOff);
+         setTypeOld("password");
+      }
+   };
+   const handleNewToggle = () => {
+      if (typeNew === "password") {
+         setIconNew(eye);
+         setTypeNew("text");
+      } else {
+         setIconNew(eyeOff);
+         setTypeNew("password");
+      }
+   };
+   const handleConfirmToggle = () => {
+      if (typeConfirm === "password") {
+         setIconConfirm(eye);
+         setTypeConfirm("text");
+      } else {
+         setIconConfirm(eyeOff);
+         setTypeConfirm("password");
+      }
+   };
+
+   const handleOldPasswords = (e) => {
+      setOldPasswords(e.target.value);
+   };
+   const handleNewPasswords = (e) => {
+      setNewPasswords(e.target.value);
+   };
+   const handleConfirmPasswords = (e) => {
+      setConfirmPasswords(e.target.value);
+   };
+
+   const handleSavePassword = () => {
+      const getToken = localStorage.getItem("token");
+      if (newPasswords !== confirmPasswords) {
+         return toast.error("confirm password worng", {
+            position: toast.POSITION.TOP_RIGHT,
+         });
+      }
+      Axios
+         .patch(
+            `${process.env.REACT_APP_BACKEND_HOST}/users/editPasswords`,
+            {
+               old_password: oldPasswords,
+               new_password: newPasswords,
+            },
+            {
+               headers: {
+                  "x-access-token": getToken,
+               },
+            }
+         )
+         .then(() => {
+            toast.success("sucess edit password");
+            handleClosePass();
+         })
+         .catch((err) =>
+            toast.error(err.response.data.msg.msg, {
+               position: toast.POSITION.TOP_RIGHT,
+            })
+         );
+   };
+
    titlebar("Coffee Time| Profile");
 
    // console.log(image);
@@ -231,7 +323,10 @@ const Profile = () => {
                   >
                      Remove Photo
                   </button>
-                  <button
+                  <button onClick={(e) => {
+                     e.preventDefault();
+                     setShowPass(true);
+                  }}
                      className={`${styles["editpwd-profile"]} mt-5 rounded-5`}
                   >
                      Edit Password
@@ -455,9 +550,88 @@ const Profile = () => {
 
             </Modal.Footer>
          </Modal>
+
+         <Modal
+            show={showPass}
+            onHide={handleClosePass}
+            backdrop="static"
+            keyboard={false}
+         >
+            <Modal.Header closeButton>
+               <Modal.Title>Edit password</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+               <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                     <label>old Password :</label>
+                     <input
+                        type={typeOld}
+                        value={oldPasswords}
+                        placeholder="Enter your old Password"
+                        onChange={handleOldPasswords}
+                     />
+
+                     <span onClick={handleOldToggle}>
+                        <div className={styles['content-pass']} >
+                           <Icon icon={iconOld} className={`${styles['oldPass']} ms-2 my-2`} />
+                        </div>
+                     </span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                     <label className={styles['label-pass']} >new Password :</label>
+                     <input
+                        type={typeNew}
+                        value={newPasswords}
+                        placeholder="Enter your new Password"
+                        onChange={handleNewPasswords}
+                     />
+
+                     <span onClick={handleNewToggle}>
+                        <div className={styles['content-pass']} >
+                           <Icon icon={iconOld} className={`${styles['oldPass']} ms-2 my-2`} />
+                        </div>
+                     </span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                     <label className={styles['label-pass']}>confirm Password :</label>
+                     <input
+                        type={typeConfirm}
+                        value={confirmPasswords}
+                        placeholder="Enter your confirm Password"
+                        onChange={handleConfirmPasswords}
+                     />
+
+                     <span onClick={handleConfirmToggle}>
+                        <div className={styles['content-pass']} >
+                           <Icon icon={iconOld} className={`${styles['oldPass']} ms-2 my-2`} />
+                        </div>
+                     </span>
+                  </div>
+               </div>
+            </Modal.Body>
+            <Modal.Footer>
+               <Button
+                  variant="danger"
+                  className="fw-bold text-bg-danger text-white"
+                  onClick={handleClosePass}
+               >
+                  cancel
+               </Button>
+               <Button
+                  variant="success"
+                  className="fw-bold text-bg-success text-white"
+                  onClick={() => {
+                     handleSavePassword();
+                  }}
+               >
+                  Yes
+               </Button>
+            </Modal.Footer>
+         </Modal>
       </>
    );
 };
+
 
 // const mapDispatchToProps = {
 //    setDataProfile,

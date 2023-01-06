@@ -250,3 +250,14 @@ input[type='file'] {
   margin-top: 7px;
   border: 4px solid #9f9f9f;
 }
+.content-pass {
+  position: relative;
+}
+.oldPass {
+  position: absolute;
+  right: 16px;
+  bottom: 3px;
+}
+.label-pass {
+  padding-top: 10px;
+}
