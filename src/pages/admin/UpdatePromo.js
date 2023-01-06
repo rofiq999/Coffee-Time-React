@@ -300,9 +300,10 @@ function UpdatePromo() {
               </div>
               <div
                 style={{
-                  // display: "flex",
-                  // justifyContent: "space-between",
-                  // width: "80%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: '3rem',
+                  // width: "40%",
                 }}
               >
                 <button className={styles.bg_setColor}
@@ -314,7 +315,7 @@ function UpdatePromo() {
                   {showColor ? "confirm color" : "select color"}
                 </button>
                 {showColor && (
-                  <button
+                  <button className={`${styles["cancel"]} `}
                     onClick={() => {
                       setShowColor((showColor) => !showColor);
                       setColor(prevColor);

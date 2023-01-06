@@ -251,6 +251,8 @@ input[type='file'] {
   padding: 0 20px;
   border-radius: 20px;
   margin-top: 20px;
+  color: white;
+  font-weight: 700;
   background: #6a4029;
 }
 .select-color {
