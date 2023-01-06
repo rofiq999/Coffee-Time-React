@@ -132,11 +132,6 @@ input[type='file'] {
   outline: none;
 }
 
-.data-form input:focus {
-  border-bottom: 2px solid #ffba33;
-  transform: scale(1.1);
-}
-
 [placeholder]:focus::-webkit-input-placeholder {
   transition: text-indent 0.3s 0.1s ease;
   text-indent: -100%;
@@ -256,7 +251,7 @@ input[type='file'] {
   padding: 0 20px;
   border-radius: 20px;
   margin-top: 20px;
-  color: black;
+  background: #6a4029;
 }
 .select-color {
   width: 40%;
@@ -264,7 +259,20 @@ input[type='file'] {
   margin-top: 20px;
   border: none;
   background-color: #ffba33;
-  color: black;
+  background: #6a4029;
+  color: white;
+  font-weight: 700;
+  border-radius: 25px;
+}
+
+.cancel {
+  width: 40%;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  font-weight: 700;
   border-radius: 25px;
 }
 .choose-product {
@@ -274,7 +282,10 @@ input[type='file'] {
   margin-bottom: 20px;
   border: none;
   background-color: #ffba33;
-  color: black;
+  background: #6a4029;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
   border-radius: 25px;
 }
 @media only screen and (max-width: 767px) {

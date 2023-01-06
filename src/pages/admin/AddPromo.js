@@ -222,7 +222,7 @@ function AddPromo() {
                   {showColor ? "confirm color" : "select color"}
                 </button>
                 {showColor && (
-                  <button
+                  <button className={`${styles["cancel"]} `}
                     onClick={() => {
                       setShowColor((showColor) => !showColor);
                       setColor(prevColor);
