@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import css navbar
 import styles from "../styles/Navbar.module.css";
@@ -10,7 +10,15 @@ import icon_coffee from "../asset/icon_titlebar.png";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-
+  const navigate = useNavigate()
+  const getSearch = (e) => {
+    // console.log(e);
+    if (e.key === 'Enter') {
+      const search = e.target.value
+      // console.log(search.target.value);
+      navigate(`/product?name_product=${search}`);
+    }
+  };
   const profile = useSelector((state) => state.auth.profile)
 
   return (
@@ -68,6 +76,7 @@ function Navbar() {
               className={styles["box-search"]}
             >
               <input
+                onKeyDown={getSearch}
                 type='search'
                 className={
                   styles["input-search"]

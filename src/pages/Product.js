@@ -12,9 +12,10 @@ import CardPromo from "../components/CardPromo";
 import CardProduct from "../components/Card-Product";
 import titlebar from "../utility/WebDinamis";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useLocation, useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
+import { useMemo } from "react";
 
 const Product = () => {
 
@@ -71,7 +72,7 @@ const Product = () => {
             setNext(res.data.result.next);
             setPrev(res.data.result.prev);
 
-            console.log(res.data.result);
+            // console.log(res.data.result);
             setLoading(false);
          })
          .catch((err) => console.log(err));
@@ -144,6 +145,28 @@ const Product = () => {
          })
          .catch((err) => console.log(err));
    };
+
+   const [deps, setDeps] = useState(1)
+   const { search } = useLocation();
+   const getValueSearch = (search) => {
+      setDeps(deps + 1)
+      return search
+   }
+   useMemo(() => new URLSearchParams(search), [search]);
+   console.log(search);
+   useEffect(() => {
+      setLoading(true);
+      axios
+         .get(
+            `${url}${search}`
+         )
+         .then((res) => {
+            setProduct(res.data.result.data);
+            // console.log(res.data.result);
+            setLoading(false);
+         })
+         .catch((err) => console.log(err));
+   }, [search.length]);
 
 
 
