@@ -77,6 +77,7 @@ function Login() {
    // Mendapatkan token dan di simpan di localstorage
    const handleApi = async (e) => {
       try {
+         setLoading(true)
          e.preventDefault();
          if (!email || !passwords) return (toast.error("Data register can't be empty", {
             position: toast.POSITION.TOP_RIGHT,
