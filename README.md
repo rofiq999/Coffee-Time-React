@@ -54,6 +54,6 @@
 
 ## Related Project
 
--  Backend API Deploy [`here`](https://github.com/rofiq999/Coffee-Time)
+-  Backend API [`here`](https://github.com/rofiq999/Coffee-Time)
 
 <p align="center"><sub><b>&copy;2022❤️Coffee Time☕</b></sub></p>
